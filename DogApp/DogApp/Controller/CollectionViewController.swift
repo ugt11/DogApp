@@ -23,9 +23,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCollectionView()
+        configureNavigationBar()
+        fetchDogImages()
+    }
+    
+    private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        fetchDogImages()
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -33,7 +38,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         collectionView.collectionViewLayout = layout
-        
+    }
+    
+    private func configureNavigationBar() {
         // ナビゲーションバーのタイトルを設定
         if let breed = breed {
             self.title = breed.capitalized
@@ -48,7 +55,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    func fetchDogImages() {
+    private func fetchDogImages() {
         guard let breed = breed, let url = URL(string: "https://dog.ceo/api/breed/\(breed)/images") else {
             return
         }

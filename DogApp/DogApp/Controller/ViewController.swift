@@ -16,6 +16,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
+        fetchDogBreeds()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 戻った時に選択表示を解除
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    private func configureNavigationBar() {
+        // ナビゲーションバーのタイトルを設定
+        self.title = "Dog Breeds"
+        
+        // ナビゲーションバーの色を設定
+        if let navigationBar = self.navigationController?.navigationBar {
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray6]
+            navigationBar.barTintColor = UIColor.black
+            // ナビゲーションバーの透過性を無効にする
+            navigationBar.isTranslucent = false
+        }
+    }
+    
+    private func fetchDogBreeds() {
         DogData.fetchDogBreeds { result in
             switch result {
             case .success(let dogBreedsResponse):
@@ -29,14 +55,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // 戻った時に選択表示を解除
-        if let indexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dogBreeds.count
     }
@@ -45,7 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let breed = dogBreeds[indexPath.row]
         cell.textLabel?.text = breed
-        cell.textLabel?.textColor = .systemGray6
+        cell.textLabel?.textColor = .systemGray6 // 指定された色を使用
         return cell
     }
     

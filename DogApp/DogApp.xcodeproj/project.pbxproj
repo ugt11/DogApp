@@ -67,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				933E7DFA2C1968F5002070C3 /* DogDetailViewController.swift */,
-				93681C1F2C17DCC80055B9C7 /* DogCollectionViewCell.swift */,
 				93681C192C16DD480055B9C7 /* CollectionViewController.swift */,
 				936559CD2C16C2840062AD53 /* ViewController.swift */,
 			);
@@ -93,17 +92,26 @@
 		936559C82C16C2840062AD53 /* DogApp */ = {
 			isa = PBXGroup;
 			children = (
-				936559C92C16C2840062AD53 /* AppDelegate.swift */,
-				936559CB2C16C2840062AD53 /* SceneDelegate.swift */,
 				9317EA9E2C192B540034D49E /* View */,
 				936559CF2C16C2840062AD53 /* Main.storyboard */,
 				9317EA9F2C192B650034D49E /* Model */,
+				93E338682C3E1DB500FCD79F /* Cell */,
 				9317EAA02C192B6F0034D49E /* Controller */,
 				936559D22C16C2880062AD53 /* Assets.xcassets */,
 				936559D42C16C2880062AD53 /* LaunchScreen.storyboard */,
+				936559CB2C16C2840062AD53 /* SceneDelegate.swift */,
+				936559C92C16C2840062AD53 /* AppDelegate.swift */,
 				936559D72C16C2880062AD53 /* Info.plist */,
 			);
 			path = DogApp;
+			sourceTree = "<group>";
+		};
+		93E338682C3E1DB500FCD79F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				93681C1F2C17DCC80055B9C7 /* DogCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
